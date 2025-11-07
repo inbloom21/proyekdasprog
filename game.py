@@ -5,6 +5,8 @@ import game_string
 import json
 import os
 
+#lorem ipsum new text qwerty
+
 player1 = {
     'Ability' : {
         'Strength' : 2,
@@ -290,4 +292,5 @@ def main():
 
 
 main()
+
 
