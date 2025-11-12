@@ -33,10 +33,22 @@ player1 = {
     'Spell' : dict()
 }
 
-json_path = os.path.join(os.path.dirname(__file__), "savefiles", "current_progress.json") #JSON save path
 enemy = dict()
 d_weapon_damage = game_env.weapon[player1['Equipment']['Weapon']]
 help_command = game_string.help_command
+
+#------------------------Save and load functions----------------------
+def save(state):#tambah savean ke current_progress.json
+    with open("current_progress.json", "w") as file:
+        save_state = json.dumps(state)
+        file.write(save_state)
+
+def load():#load savean dari current_progress.json
+    with open("current_progress.json") as file:
+        save_state = json.load(file)
+        global player1
+        player1 = save_state
+
 #------------------------Else functions----------------------
 
 def delay(sec): #ini fungsi delay, nanti penggunaannya delay(detik)
@@ -233,6 +245,14 @@ def enemy_handler(): #ini buat ngejalanin musuh. jadi musuh nyerang sama mati ad
     else:
         print(f'{enemy['Name']} mencoba menyerang kamu, tetapi tidak kena!')
 
+def save_handler():
+    save(player1)
+    print('Progres anda telah di save')
+
+def load_handler():
+    load()
+    print('Berhasil load progres')
+
 #------------------------Command maps----------------------
 #jadi bakal ngejalanin fungsi sesuai input pemain
 command_map = { #ini command saat ngga combat
@@ -240,6 +260,8 @@ command_map = { #ini command saat ngga combat
     'exit': exit_handler,
     'cek': lambda arg= None: cek_handler(arg) if arg else print('Kategori harus disebutkan. ketik "help cek"'),
     'help': lambda arg= None: help_handler(arg) if arg else print('Kategori harus disebutkan.'),
+    'save': save_handler,
+    'load': load_handler
 }
 
 combat_command = { #ini command saat combat
@@ -320,3 +342,4 @@ main()
 
 #okeoke
 #bagian spell nya belom gw koding jadi error
+
