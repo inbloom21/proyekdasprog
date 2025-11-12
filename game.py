@@ -340,7 +340,9 @@ main()
 # Spell Action
 # Win condition
 # test lagi
+# test lagi lagi
 
 #okeoke
 #bagian spell nya belom gw koding jadi error
+
 
