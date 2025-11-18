@@ -2,8 +2,8 @@ buah = ["Jeruk", "Naga", "Pepaya", "Mangga"]
 armor = {
     # Armor : AC_modifier
     "Cloth" : 1,
-    "Studded Leather" : 2,
-    "Leather" : 3,
+    "Studded Leather" : 3,
+    "Leather" : 2,
     "Plate" : 4,
     "Cloak" : 1
 }
@@ -24,8 +24,8 @@ spell = {
     "Bullet" : (2, 6, "None"),
     "Cannon" : (7, 20, "None"),
     "Armor" : (4, 2, "None"),
-    "Fog" : (1, 0, "Fog"),
-    "Blind" : (2, 0, "Blind")
+    "Fog" : (2, 0, "Fog"),
+    "Blind" : (5, 0, "Blind")
 }
 enemy = {
     #Enemy : HP, damage_dice, speed_modifier
