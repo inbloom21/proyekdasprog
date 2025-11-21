@@ -1,6 +1,5 @@
 #------------------------ Enemy ----------------------
 monsters = {
-    # --- Batch 1 ---
     "Owlbear": {
         "Hit": [
             "HIT - Cakar Owlbear merobek pertahananmu!",
@@ -106,7 +105,6 @@ monsters = {
         ]
     },
 
-    # --- Batch 2 ---
     "Mummy": {
         "Hit": [
             "HIT - Pukulan Mummy yang berat menghantam dadamu!",
@@ -212,7 +210,6 @@ monsters = {
         ]
     },
 
-    # --- Batch 3 ---
     "Saber Toothed Tiger": {
         "Hit": [
             "HIT - Taring panjangnya menghantam bahumu!",
@@ -318,7 +315,6 @@ monsters = {
         ]
     },
 
-    # --- Batch 4 ---
     "Basilisk": {
         "Hit": [
             "HIT - Gigitan kuat basilisk mengenai lenganmu!",
@@ -423,8 +419,7 @@ monsters = {
             "MISS - Makhluk itu memekik kecewa!"
         ]
     },
-
-    # --- Batch 5 ---
+    
     "Ghoul": {
         "Hit": [
             "HIT - Cakaran busuk ghoul merobek kulitmu!",
@@ -531,31 +526,91 @@ monsters = {
     }
 }
 
+biome = {
+    'Arrived' : {
+        'Grassland' : 'Kamu tiba di padang rumput yang luas dengan angin sepoi-sepoi.',
+        'Forest' : 'Kamu memasuki hutan lebat dengan pepohonan yang menjulang tinggi.',
+        'Desert' : 'Kamu berjalan hingga menemui gurun yang panas dan berpasir.',
+        'Tundra' : 'Kamu memasuki hutan salju dengan pepohonan tinggi dan suhu yang dingin.',
+        'Hills' : 'Kamu mendaki hingga mencapai bukit yang hijau dan berangin.',
+        'Swamp' : 'Kamu melintasi rawa-rawa yang basah dan penuh dengan tanaman liar.'
+    },
+    'Desc' : {
+        'Grassland' : 'Padang rumput yang luas dengan angin sepoi-sepoi.',
+        'Forest' : 'Hutan lebat dengan pepohonan yang menjulang tinggi.',
+        'Desert' : 'Gurun yang panas dan berpasir.\nSpell api akan menjadi  kuat disini, tapi spell air/es akan melemah.',
+        'Tundra' : 'Hutan salju dengan pepohonan tinggi dan suhu yang dingin.\n Spell air/es akan menjadi kuat disini, tapi spell api akan melemah.',
+        'Hills' : 'Bukit yang hijau dan berangin.',
+        'Swamp' : 'Rawa-rawa yang basah dan penuh dengan tanaman liar.'
+    }
+}
 
 #ini belom jadi. tadinya tiap serangan mau ada deskripsi kayak gini
 
 #------------------------ Help ----------------------
 help_command = {
     'cek' : (
-        'Perintah \'cek\' digunakan untuk melihat daftar item dalam kategori tertentu.',
-        'Kategori cek: ability, status, buah, equipment.',
-        'Contoh penggunaan: cek buah'
+        'Perintah "cek" digunakan untuk melihat daftar item dalam kategori tertentu.',
+        'Kategori cek: ability, status, buah, equipment, dan spell.',
+        'Penggunaan: cek <kategori>/"cek status"'
     ),
     'jalan' : (
-        'Perintah \'jalan\' digunakan untuk memulai perjalanan menjauh dari rumah.',
-        'Setiap kali kamu menggunakan perintah ini, posisimu akan bertambah 50 meter.'
+        'Perintah "jalan" digunakan untuk memulai perjalanan menjauh dari rumah.',
+        'Setiap kali kamu menggunakan perintah ini, posisimu akan bertambah 75 meter.'
     ),
     'exit' : (
-        'Perintah \'exit\' digunakan untuk keluar dari permainan.',
+        'Perintah "exit" digunakan untuk keluar dari permainan.',
     ),
     'equipment' : (
         'Armor berfungsi untuk mengurangi kemungkinanmu terkena serangan musuh.',
-        'Weapon adalah senjata yang kamu gunakan.'
+        'Weapon berfungsi untuk meningkatkan roll damage.'
     ),
     'objective' : (
         'Tujuan utama game ini adalah mengumpulkan buah-buahan.',
         'Kumpulkan masing-masing 5 dan berhasil kembali ke rumah untuk menyelesaikan permainan'
+    ),
+    'biome' : (
+        'Ada 6 biome yang bisa kamu jelajahi: Grassland, Forest, Desert, Tundra, Hills, dan Swamp.',
+        'Setiap biome memiliki musuh yang berbeda.',
+        'Beberapa biome akan mempengaruhi kekuatan spell tertentu.'
+    ),
+    'grassland' : (
+        biome[ 'Desc']['Grassland']
+    ),
+    'forest' : (
+        biome[ 'Desc']['Forest']
+    ),
+    'desert' : (
+        biome[ 'Desc']['Desert']
+    ),
+    'tundra' : (
+        biome[ 'Desc']['Tundra']
+    ),
+    'hills' : (
+        biome[ 'Desc']['Hills']
+    ),
+    'swamp' : (
+        biome[ 'Desc']['Swamp']
+    ),
+    #Combat Help
+    'combat' : (
+        'Di dalam combat, kamu dapat menyerang dengan senjata, menggunakan spell, atau kabur.',
+        'Roll serang kamu harus mengenai musuh untuk memberikan damage atau berhasil dari pertarungan.'
+    ),
+    'serang' : (
+        'Kamu melakukan serangan ke musuh menggunakan senjata yang dipakai.',
+        'Roll serangan harus melewati 9 agar bisa mengenai musuh dan memberikan damage.',
+    ),
+    'kabur' : (
+        'Jika kamu tidak yakin dengan stats-mu, kamu bisa mencoba kabur dari pertarungan.',
+        'Roll kabur harus melewati 12 + DEX musuh untuk berhasil kabur.'
+    ),
+    #Spell Help
+    'spell' : (
+        'Kamu bisa cast spell dengan memilih nama spell yang sudah dipelajari dari scroll.',
+        'Roll spell harus meelewati 9 + Wisdom untuk bisa mengenai musuh.',
+        'Beberapa spell memiliki efek nya masing-masing.',
+        'Spell akan mengkonsumsi mana saat digunakan.',
+        'Penggunaan: spell <nama spell>/"spell fireball"'
     )
 }
-
-#Nanti fungsi help bakal ngereferensiin ini
