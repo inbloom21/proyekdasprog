@@ -21,8 +21,8 @@ player1 = {
         'In Combat' : False
     },
  
-    'Buah' : {
-        'Total Buah' : 0
+    'Barang' : {
+        'Total Barang' : 0
     },
     'Equipment' : {
         'Armor' : 'Cloth',
@@ -80,12 +80,12 @@ def spawn_enemy(): #ini tadi buat ngasih stats ke musuh
     enemy['DEX'] = game_env.enemy[current_biome][name][2]
     enemy['Effect'] = []
 
-def spawn_fruit(): 
-    fruit = random.choice(game_env.buah)
-    player1['Buah']['Total Buah'] += 1
-    print(f'Kamu menemukan buah: {fruit}!')
+def spawn_barang(): 
+    barang = random.choice(game_env.barang)
+    player1['Barang']['Total Barang'] += 1
+    print(f'Kamu menemukan barang langka: {barang}!')
     delay(1)
-    print(f'Jumlah buah sekarang: {player1["Buah"]["Total Buah"]}')
+    print(f'Jumlah barang sekarang: {player1["Barang"]["Total Barang"]}')
 
 def spawn_weapon():
     weapon = random.choice(game_env.weapon_all)
@@ -121,15 +121,15 @@ def spawn_potion(potion):
             delay(1)
         case 'health':
             # simple health potion
-            player1['Status']['Health'] += 10
-            print('Kamu menemukan sebuah health potion. +10 Health.')
+            player1['Status']['Health'] += 7
+            print('Kamu menemukan sebuah health potion. +7 Health.')
             delay(1)
 
 def spawn_loot(): #ini buat spawn loot random. palingan nanti tiap loot bakal dibikin fungsi baru lagi aja
     d_100 = random.randint(1, 100)
-    # 30% fruit, 10% weapon, 10% armor, 10% spell scroll, 20% mana potion, 20% health potion
+    # 30% barang, 10% weapon, 10% armor, 10% spell scroll, 20% mana potion, 20% health potion
     if d_100 > 70:
-        spawn_fruit()
+        spawn_barang()
     elif d_100 >= 60:
         spawn_weapon()
     elif d_100 >= 50:
@@ -168,7 +168,7 @@ def jalan_handler(): #ini kalau player input jalan. niatnya setelah beberapa rat
     player1['Status']['Position'] += 75
     print('Kamu berjalan sejauh 75 meter.')
     print('Jarak dari rumahmu sekarang adalah', player1['Status']['Position'], 'meter.')
-    if player1['Status']['Position'] % 150 == 0: #____________________________________MODULUSNYA NANTI GANTI PAS FINAL PRODUCT, 150 BUAT TESTING DOANG
+    if player1['Status']['Position'] % 450 == 0:
         biome_handler()
     d_10 = dice(10)
     if d_10 < 4:
@@ -177,8 +177,7 @@ def jalan_handler(): #ini kalau player input jalan. niatnya setelah beberapa rat
             return 1
     if d_10 > 4:
         spawn_loot()
-        if player1['Buah']['Total Buah'] == 5:
-            print('Kamu berhasil mengumpulkan 5 buah, kamu menyelesaikan permainan ini!')
+        if player1['Barang']['Total Barang'] == 5:
             return 1
 
 
@@ -199,7 +198,7 @@ def cek_handler(category): #mirip mirip sama help_handler
         print('Kategori tidak ditemukan. ketik "help cek"')
         return 0
     print('---' + category.capitalize() + '---')
-    for item, value in player1[category.capitalize()].items():
+    for item, value in sorted(player1[category.capitalize()].items()):
         print(f'{item}: {value}')
     return 0
 
@@ -211,13 +210,14 @@ def help_handler(category): #ini kalau player input "help"
         print(item)
 
 def serang_handler(): #ini kalau player nyerang
-    if dice(20) > 9:
+    d_hit = dice(20) + player1['Ability']['Dexterity']
+    if d_hit > 9 + enemy['DEX']:
         damage = dice(d_weapon_damage) + player1['Ability']['Strength']
         enemy['Health'] -= damage
-        print(f'Kamu menyerang musuh dan memberikan {damage} damage!')
+        print(f'HIT - Seranganmu memberikan {damage} damage!')
         return 1
     else:
-        print('Kamu gagal menyerang musuh!')
+        print('MISS - Seranganmu gagal mengenai musuh.')
         return 1
 
 
@@ -235,14 +235,13 @@ def spell_handler(spell): #ini belom jadi. niatnya buat spell tadi.
     print(f'Kamu menggunakan spell {spell} dan menghabiskan {player1["Spell"][spell][0]} mana.')
     d_hit = dice(20) + player1['Ability']['Wisdom']
     if d_hit > 9:
-        print('Hit!')
-        print(f"Musuh terkena {player1["Spell"][spell][1]} damage.")
+        print(f"HIT - Musuh terkena {player1['Spell'][spell][1]} damage.")
         damage = player1['Spell'][spell][1]
         enemy['Health'] -= damage
         enemy['Effect'].append(player1['Spell'][spell][2]) #efek spell, kayaknya bakal gw ubah lagi nanti
         return 1
     else:
-        print('Tidak hit!')
+        print('MISS - Spell gagal mengenai musuh.')
         return 1
 
 def kabur_handler(): #ini buat player kabur pas combat
@@ -257,13 +256,26 @@ def kabur_handler(): #ini buat player kabur pas combat
         return 1
 
 def enemy_handler(): #ini buat ngejalanin musuh. jadi musuh nyerang sama mati ada disini. ini dipanggil pas combat
-    if enemy['Effect'] == 'Fire' and player1['Status']['Biome'] != 'Tundra':
-        enemy['Health'] -= 2
-        print("Musuh terkena 2 damage dari efek Fire")
+    if enemy['Effect'] == 'Burn' and player1['Status']['Biome'] != 'Tundra':
+        if player1['Status']['Biome'] == 'Desert':
+            enemy['Health'] -= 5
+            print("Musuh terkena 5 damage dari efek Burn")
+        else:
+            enemy['Health'] -= 2
+            print("Musuh terkena 2 damage dari efek Burn")
+    if enemy['Effect'] == 'Freeze' and player1['Status']['Biome'] != 'Desert':
+        if player1['Status']['Biome'] == 'Tundra':
+            enemy['Health'] -= 5
+            print("Musuh terkena 5 damage dari efek Freeze")
+        else:
+            enemy['Health'] -= 2
+            print("Musuh terkena 2 damage dari efek Freeze")
     if enemy['Health'] <= 0:
         print(f'Kamu mengalahkan {enemy["Name"]}!')
         delay(1)
         if dice(2) == 1:
+            print(f'{enemy["Name"]} menjatuhkan sesuatu...')
+            delay(1)
             spawn_loot()
         set_in_combat(False)
         enemy.clear()
@@ -277,11 +289,16 @@ def enemy_handler(): #ini buat ngejalanin musuh. jadi musuh nyerang sama mati ad
         print('Musuh tidak bisa melihat')
         d_20 -= 10
     damage = dice(enemy['DMG'])
+    print(f'{enemy["Name"]} menyerang kamu!')
+    delay(1)
     if d_20 >= player1['Status']['AC']:
-        print(f'Kamu terkena damage {damage} serangan musuh!')
+        print(random.choice(game_string.monsters[enemy['Name']]['Hit']))
+        delay(1)
+        print(f'Kamu terkena {damage} damage!')
         player1['Status']['Health'] -= damage
     else:
-        print(f'{enemy['Name']} mencoba menyerang kamu, tetapi tidak kena!')
+        print(random.choice(game_string.monsters[enemy['Name']]['Miss']))
+        delay(1)
 
 def save_handler():
     if player1['Status']['In Combat'] is True:
@@ -324,12 +341,13 @@ combat_command = { #ini command saat combat
 
 def combat_handler():
     spawn_enemy()
-    print(f"{enemy['Name']} muncul dari semak-semak!\nKetik serang, spell, atau kabur.")
+    print(f"{enemy['Name']} muncul dan mulai mengancammu!\nKetik serang, spell, atau kabur.")
     set_in_combat(True)
     while player1['Status']['In Combat'] == True and player1['Status']['Health'] > 0:
         input_player = input('>>>>>').lower()
         input_player = tuple(input_player.split(' '))
         if input_handler(*input_player) == 1:
+            delay(1)
             enemy_handler() #disini dipanggilnya. jadi setelah giliran player, musuh juga jalan/aksi
         if death_handler() == 1:
             set_in_combat(False)
@@ -358,10 +376,10 @@ def start(): #ini buat masukin base stats nya
     armor_modifier()
 
 def run_game(): #Ini fungsi buat ngejalanin game nya 
-    print('Objective adalah tujuan utama dalam permainan ini, yaitu mengumpulkan buah-buahan tertentu sampai 5.\
-        \nKamu akan berjalan menjauh dari rumahmu, dan menghadapi berbagai musuh serta mengumpulkan buah-buahan\
+    print('Objective adalah tujuan utama dalam permainan ini, yaitu mengumpulkan barang-barang langka sampai 5.\
+        \nKamu akan berjalan menjauh dari rumahmu, dan menghadapi berbagai musuh serta mengumpulkan barang-barang langka\
         \nMasukan perintah cek, jalan, help, atau exit untuk memulai permainan.')
-    while True:
+    while player1['Barang']['Total Barang'] < 5:
         input_player = input('>>>>>').lower()
         input_player = tuple(input_player.split(' '))
         result = input_handler(*input_player)
@@ -374,17 +392,15 @@ def main(): #Ini fungsi buat main game nya. jadi bisa retry dan ngeloop terus ka
         start()
         run_game()
         if player1['Status']['Health'] <= 0:
+            delay(1)
             retry_answer = input('Kamu kalah! Ingin coba lagi? (y/n)').strip().lower()
         else:
+            delay(1)
+            print('Kamu berhasil mengumpulkan 5 barang langka!')
+            delay(1)
             retry_answer = input('Kamu menang! Ingin coba lagi? (y/n)').strip().lower()
         if retry_answer != 'y':
             print('Terimakasih telah bermain!')
             break
 
 main()
-
-#TO-DO:
-# Spell Action
-# Win condition
-
-
