@@ -635,7 +635,7 @@ biome = {
 help_command = {
     'cek' : (
         'Perintah "cek" digunakan untuk melihat daftar item dalam kategori tertentu.',
-        'Kategori cek: ability, status, buah, equipment, dan spell.',
+        'Kategori cek: ability, status, barang, equipment, dan spell.',
         'Penggunaan: cek <kategori>/"cek status"'
     ),
     'jalan' : (
