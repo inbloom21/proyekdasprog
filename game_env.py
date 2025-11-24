@@ -1,4 +1,25 @@
-buah = ["Jeruk", "Naga", "Pepaya", "Mangga"]
+barang = [
+    "Kepingan Meteorit",
+    "Bola Penjaga Alam",
+    "Jam Pasir Penjaga Dimensi",
+    "Kalung Jiwa Naga",
+    "Kristal Penampung Energi",
+    "Batu Penuntun Takdir",
+    "Topeng Leluhur Vampir",
+    "Cawan Abadi",
+    "Kapsul Waktu Kerajaan Pasundan",
+    "Kepingan Pilar Dunia",
+    "Manik Kebenaran Laut",
+    "Permata Matahari Malam",
+    "Tablet Kuno Terlarang",
+    "Jimat Pemecah Kutukan",
+    "Keping Peta Peradaban Lama",
+    "Batu Nafas Hutan Purba",
+    "Jurnal Si Jari Enam",
+    "Relik Kuil Atlantis",
+    "Botol Udara Atlantis",
+    "Koin Emas Saranjana"
+]
 biome = ['Grassland', 'Forest', 'Desert', 'Tundra', 'Hills', 'Swamp']
 
 armor = {
@@ -14,18 +35,20 @@ weapon = {
     "Shortsword" : 6,
     "Rapier" : 8,
     "Longsword" : 10,
+    "War Axe" : 10,
+    "Axe" : 8,
+    "Spear" : 8,
     "Scimitar" : 6,
     "Mace" : 6,
-    "Dagger" : 4,
-    "Staff" : 4
 }
 spell = {
     # Spell : mana cost, damage_dice, effect
-    "Fireball" : (5, 12, "Fire"),
-    "Firebolt" : (3, 8, "Fire"),
+    "Fireball" : (5, 12, "Burn"),
+    "Firebolt" : (3, 8, "Burn"),
+    "Icespray" : (3, 8, "Freeze"),
+    "Swordice" : (4, 10, "Freeze"),
     "Bullet" : (2, 6, "None"),
     "Cannon" : (7, 20, "None"),
-    "Armor" : (4, 2, "None"),
     "Fog" : (2, 0, "Fog"),
     "Blind" : (5, 0, "Blind")
 }
