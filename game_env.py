@@ -32,45 +32,45 @@ spell = {
 enemy = {
     'Grassland' : {
     #Enemy : HP, damage_dice, speed_modifier
-        "Goblin" : [30, 2, 0],
-        "Orc" : [50, 2, -1],
-        "Troll" : [80, 8, -1],
-        "Bandit" : [40, 4, 0]
+        "Goblin" : [15, 2, 0],
+        "Orc" : [20, 2, -1],
+        "Troll" : [30, 6, -1],
+        "Bandit" : [20, 4, 0]
     },
     'Forest' : {
-        'Owlbear': [90, 10, -1],
-        'Werewolf': [70, 6, 1],
-        'Goblin Hexer': [40, 4, 1],
-        'Ogre': [120, 12, -2],
-        'Grick': [60, 6, 0],
+        'Owlbear': [35, 6, -1],
+        'Werewolf': [25, 4, 1],
+        'Goblin Hexer': [18, 4, 1],
+        'Ogre': [40, 8, -2],
+        'Grick': [40, 6, 0],
     },
     'Desert' : {
-        'Mummy': [55, 6, -2],
-        'Giant Scorpion': [75, 8, 0],
-        'Leucrotta': [85, 8, 1],
-        'Meazel': [45, 4, 2],
-        'Giant Spider': [65, 6, 1],
+        'Mummy': [18, 4, -2],
+        'Giant Scorpion': [35, 6, 0],
+        'Leucrotta': [40, 6, 1],
+        'Meazel': [35, 4, 2],
+        'Giant Spider': [30, 6, 1],
     },
     'Tundra' : {
-        'Saber Toothed Tiger': [70, 8, 2],
-        'Yeti': [90, 10, -1],
-        'Winter Wolf': [80, 8, 1],
-        'Polar Bear': [85, 8, 0],
-        'Manticore': [95, 10, 1],
+        'Saber Toothed Tiger': [25, 6, 2],
+        'Yeti': [40, 8, -1],
+        'Winter Wolf': [18, 4, 1],
+        'Polar Bear': [28, 6, 0],
+        'Manticore': [40, 8, 1],
     },
     'Hills' : {
-        'Basilisk': [75, 8, 0],
-        'Griffon': [85, 8, 2],
-        'Neogi': [55, 6, 0],
-        'Harpy': [50, 4, 1],
-        'Giant Vulture': [60, 6, 1],
+        'Basilisk': [35, 8, 0],
+        'Griffon': [45, 6, 2],
+        'Neogi': [40, 6, 0],
+        'Harpy': [25, 4, 1],
+        'Giant Vulture': [35, 4, 1],
     },
     'Swamp' : {
-        'Ghoul': [45, 4, 0],
-        'Giant Crocodile': [110, 12, -1],
-        'Giant Snakes': [70, 6, 1],
-        'Flail Snail': [85, 10, -2],
-        'Wight': [65, 6, 0]
+        'Ghoul': [15, 2, 0],
+        'Giant Crocodile': [30, 6, -1],
+        'Giant Snakes': [35, 4, 1],
+        'Flail Snail': [40, 8, -2],
+        'Wight': [20, 4, 0]
     }
 }
 

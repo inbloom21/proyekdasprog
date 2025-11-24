@@ -38,7 +38,7 @@ help_command = game_string.help_command
 #------------------------Save and load functions----------------------
 def save(state):#tambah savean ke current_progress.json
     with open("current_progress.json", "w") as file:
-        save_state = json.dumps(state)
+        save_state = json.dumps(state, indent=4)
         file.write(save_state)
 
 def load():#load savean dari current_progress.json
@@ -177,6 +177,9 @@ def jalan_handler(): #ini kalau player input jalan. niatnya setelah beberapa rat
             return 1
     if d_10 > 4:
         spawn_loot()
+        if player1['Buah']['Total Buah'] == 5:
+            print('Kamu berhasil mengumpulkan 5 buah, kamu menyelesaikan permainan ini!')
+            return 1
 
 
 def exit_handler(): #buat keluar dari game
@@ -370,7 +373,10 @@ def main(): #Ini fungsi buat main game nya. jadi bisa retry dan ngeloop terus ka
         set_in_combat(False)
         start()
         run_game()
-        retry_answer = input('Kamu kalah! Ingin coba lagi? (y/n)').strip().lower()
+        if player1['Status']['Health'] <= 0:
+            retry_answer = input('Kamu kalah! Ingin coba lagi? (y/n)').strip().lower()
+        else:
+            retry_answer = input('Kamu menang! Ingin coba lagi? (y/n)').strip().lower()
         if retry_answer != 'y':
             print('Terimakasih telah bermain!')
             break
