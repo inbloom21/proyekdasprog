@@ -1,5 +1,89 @@
 #------------------------ Enemy ----------------------
 monsters = {
+    "Goblin": {
+        "Hit": [
+            "HIT - Goblin menusukmu dengan belatinya!",
+            "HIT - Goblin melompat dan menggores kakimu!",
+            "HIT - Serangan cepat Goblin mengenai tubuhmu!",
+            "HIT - Goblin melempar batu tepat ke kepalamu!",
+            "HIT - Belati karatan Goblin menembus pertahananmu!",
+            "HIT - Goblin menyelinap di belakangmu dan menyerang!",
+            "HIT - Serangan licik Goblin membuatmu terkejut!"
+        ],
+        "Miss": [
+            "MISS - Goblin melompat tapi serangannya meleset!",
+            "MISS - Belatinya gagal menusukmu!",
+            "MISS - Kau menghindar dari tebasannya yang ceroboh!",
+            "MISS - Goblin kehilangan keseimbangan saat menyerang!",
+            "MISS - Serangan jarak jauh Goblin tidak mengenai target!",
+            "MISS - Ia terpeleset saat mencoba manuver cepat!",
+            "MISS - Goblin menggeram frustasi setelah gagal menyerang!"
+        ]
+    },
+
+    "Orc": {
+        "Hit": [
+            "HIT - Kapak besar Orc menghantammu keras!",
+            "HIT - Orc mengayunkan tinjunya ke arah rahangmu!",
+            "HIT - Serangan brutal Orc mematahkan pertahananmu!",
+            "HIT - Orc menandukmu dengan kekuatan penuh!",
+            "HIT - Tebasan besar Orc mengenai tubuhmu!",
+            "HIT - Orc menghempaskanmu dengan dorongan kuat!",
+            "HIT - Geraman marahnya diikuti pukulan mematikan!"
+        ],
+        "Miss": [
+            "MISS - Kapak Orc menghantam tanah dan tidak mengenaimu!",
+            "MISS - Kau menghindar dari pukulan masifnya!",
+            "MISS - Orc menyerang terlalu lambat!",
+            "MISS - Orc terpeleset karena tenaganya sendiri!",
+            "MISS - Tebasan lebarnya meleset jauh!",
+            "MISS - Serangan liar Orc gagal mengenai sasaran!",
+            "MISS - Orc menggeram kesal setelah salah perhitungan!"
+        ]
+    },
+
+    "Troll": {
+        "Hit": [
+            "HIT - Tangan besar Troll menghantam tubuhmu!",
+            "HIT - Troll mengayunkan gada improvisasinya ke arahmu!",
+            "HIT - Pukulan lambat tapi kuat mengenai dadamu!",
+            "HIT - Troll menjatuhkanmu dengan serangan mematikan!",
+            "HIT - Tubuh raksasa Troll menabrakmu keras!",
+            "HIT - Cakar Troll merobek pertahananmu!",
+            "HIT - Dia meraih dan membantingmu ke tanah!"
+        ],
+        "Miss": [
+            "MISS - Serangan Troll terlalu lambat untuk mengenai!",
+            "MISS - Kau berguling menghindari pukulannya!",
+            "MISS - Troll menghantam udara kosong!",
+            "MISS - Troll kehilangan keseimbangan saat mengayun!",
+            "MISS - Tebasan besar Troll meleset jauh!",
+            "MISS - Troll mengaum frustasi setelah gagal memukul!",
+            "MISS - Tanah bergetar, tapi serangannya tetap meleset!"
+        ]
+    },
+
+    "Bandit": {
+        "Hit": [
+            "HIT - Bandit menusukmu dengan pisau cepat!",
+            "HIT - Bandit menembakkan panah yang mengenai bahumu!",
+            "HIT - Tebasan pedangnya mengenai target!",
+            "HIT - Bandit menyerangmu dengan gaya licik!",
+            "HIT - Ia meraih kesempatan dan memukulmu keras!",
+            "HIT - Serangan mendadak Bandit menembus celah pertahananmu!",
+            "HIT - Ia meluncurkan serangan ganda tepat ke arahmu!"
+        ],
+        "Miss": [
+            "MISS - Pisau Bandit hanya mengenai udara!",
+            "MISS - Kau menahan dan mengalihkan serangannya!",
+            "MISS - Panahnya meleset dari jarak dekat!",
+            "MISS - Bandit tersandung saat maju!",
+            "MISS - Serangan cepatnya gagal mengenai target!",
+            "MISS - Kau memblokir pukulannya tepat waktu!",
+            "MISS - Bandit mundur frustasi setelah gagal menyerang!"
+        ]
+    },
+
     "Owlbear": {
         "Hit": [
             "HIT - Cakar Owlbear merobek pertahananmu!",
@@ -538,8 +622,8 @@ biome = {
     'Desc' : {
         'Grassland' : 'Padang rumput yang luas dengan angin sepoi-sepoi.',
         'Forest' : 'Hutan lebat dengan pepohonan yang menjulang tinggi.',
-        'Desert' : 'Gurun yang panas dan berpasir.\nSpell api akan menjadi  kuat disini, tapi spell air/es akan melemah.',
-        'Tundra' : 'Hutan salju dengan pepohonan tinggi dan suhu yang dingin.\n Spell air/es akan menjadi kuat disini, tapi spell api akan melemah.',
+        'Desert' : 'Gurun yang panas dan berpasir.\nSpell api akan menjadi  kuat disini, tapi spell es akan melemah.',
+        'Tundra' : 'Hutan salju dengan pepohonan tinggi dan suhu yang dingin.\n Spell es akan menjadi kuat disini, tapi spell api akan melemah.',
         'Hills' : 'Bukit yang hijau dan berangin.',
         'Swamp' : 'Rawa-rawa yang basah dan penuh dengan tanaman liar.'
     }
@@ -566,8 +650,8 @@ help_command = {
         'Weapon berfungsi untuk meningkatkan roll damage.'
     ),
     'objective' : (
-        'Tujuan utama game ini adalah mengumpulkan buah-buahan.',
-        'Kumpulkan masing-masing 5 dan berhasil kembali ke rumah untuk menyelesaikan permainan'
+        'Tujuan utama game ini adalah mengumpulkan barang langka.',
+        'Kumpulkan sampai 5 barang langka untuk menyelesaikan permainan'
     ),
     'biome' : (
         'Ada 6 biome yang bisa kamu jelajahi: Grassland, Forest, Desert, Tundra, Hills, dan Swamp.',
@@ -612,5 +696,26 @@ help_command = {
         'Beberapa spell memiliki efek nya masing-masing.',
         'Spell akan mengkonsumsi mana saat digunakan.',
         'Penggunaan: spell <nama spell>/"spell fireball"'
-    )
+    ),
+
+    'ac' : (
+        'AC (Armor Class) menentukan seberapa sulitnya musuh untuk mengenai kamu saat menyerang.',
+        'Semakin tinggi AC-mu, semakin sulit bagi musuh untuk menyerangmu.'
+    ),
+
+    'mana' : (
+        'Setiap spell memerlukan sejumlah mana untuk bisa digunakan.',
+        'Pastikan kamu memiliki cukup mana sebelum mencoba menggunakan spell.'
+    ),
+
+    'save' : (
+        'Perintah "save" digunakan untuk menyimpan progres permainanmu.',
+        'Kamu dapat memuat progres yang sudah disimpan dengan perintah "load".'
+    ),
+
+    'load' : (
+        'Perintah "load" digunakan untuk memuat progres permainan yang sudah disimpan sebelumnya.',
+    ),
+
+
 }
